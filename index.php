@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
 
-    <link rel="icon" href="https://icon-library.com/images/downloader-icon/downloader-icon-23.jpg" type="image/jpeg" sizes="16x16">
+    <link rel="icon" href="https://cdn3.iconfinder.com/data/icons/brain-games/128/Tic-Tac-Toe-Game.png" type="image/jpeg" sizes="16x16">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <title>3D2Y-S3T</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 
 <body>
@@ -46,46 +46,48 @@
         }
         ReactDOM.render(<Secret/> , document.getElementById("Secret"));
 
+        let XO = [['-','-','-'], ['-','-','-'], ['-','-','-']];
+
         function ChangetoX(propsss){
             let R = parseInt(propsss.R);
             let C = parseInt(propsss.C);
             let NR, NC;
-
-            if(R===1 && C===1){
+            
+            if(R===0 && C===0){
+                NR=1;
+                NC=0;
+            }
+            else if(R===0 && C===1){
                 NR=2;
+                NC=2;
+            }
+            else if(R===0 && C===2){
+                NR=2;
+                NC=0;
+            }
+            else if(R===1 && C===0){
+                NR=0;
                 NC=1;
+            }
+            else if(R===1 && C===1){
+                NR=1;
+                NC=2;
             }
             else if(R===1 && C===2){
-                NR=3;
-                NC=3;
-            }
-            else if(R===1 && C===3){
-                NR=3;
+                NR=0;
                 NC=1;
+            }
+            else if(R===2 && C===0){
+                NR=0;
+                NC=0;
             }
             else if(R===2 && C===1){
                 NR=1;
-                NC=2;
+                NC=0;
             }
             else if(R===2 && C===2){
                 NR=2;
-                NC=3;
-            }
-            else if(R===2 && C===3){
-                NR=1;
-                NC=2;
-            }
-            else if(R===3 && C===1){
-                NR=1;
                 NC=1;
-            }
-            else if(R===3 && C===2){
-                NR=2;
-                NC=1;
-            }
-            else if(R===3 && C===3){
-                NR=3;
-                NC=2;
             }
             else{
                 null;
@@ -93,12 +95,25 @@
 
             let Dest = 'R'+NR+'C'+NC;
             console.log(Dest);
-            ReactDOM.render(<ChangetoO/> , document.getElementById(Dest));
+
+            XO[R][C]='X';
+
+            if((XO[R][C]==='X' || XO[R][C]==='O')){
+            ReactDOM.render(<ChangetoO R={NR} C={NC} /> , document.getElementById(Dest));
+            }
+            
+            
                 return(
                     <a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}><i class="bi bi-x-lg"></i></a>
                 );
         }
         function ChangetoO(propsss){
+
+            let R = parseInt(propsss.R);
+            let C = parseInt(propsss.C);
+            XO[R][C]='O';
+            console.log(XO);
+
                 return(
                     <a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}><i class="bi bi-circle"></i></a>
                 );
@@ -108,25 +123,25 @@
             return(
                 <table>
                     <tr>
+                        <th id='R0C0'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='0' C='0'/> , document.getElementById("R0C0"));}}><i class="bi bi-square"></i></a></th>
+                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
+                        <th id='R0C1'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='0' C='1'/> , document.getElementById("R0C1"));}}><i class="bi bi-square"></i></a></th>
+                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
+                        <th id='R0C2'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='0' C='2'/> , document.getElementById("R0C2"));}}><i class="bi bi-square"></i></a></th>
+                    </tr>
+                    <tr>
+                        <th id='R1C0'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='1' C='0'/> , document.getElementById("R1C0"));}}><i class="bi bi-square"></i></a></th>
+                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
                         <th id='R1C1'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='1' C='1'/> , document.getElementById("R1C1"));}}><i class="bi bi-square"></i></a></th>
                         <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
                         <th id='R1C2'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='1' C='2'/> , document.getElementById("R1C2"));}}><i class="bi bi-square"></i></a></th>
-                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
-                        <th id='R1C3'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='1' C='3'/> , document.getElementById("R1C3"));}}><i class="bi bi-square"></i></a></th>
                     </tr>
                     <tr>
+                        <th id='R2C0'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='2' C='0'/> , document.getElementById("R2C0"));}}><i class="bi bi-square"></i></a></th>
+                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
                         <th id='R2C1'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='2' C='1'/> , document.getElementById("R2C1"));}}><i class="bi bi-square"></i></a></th>
                         <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
                         <th id='R2C2'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='2' C='2'/> , document.getElementById("R2C2"));}}><i class="bi bi-square"></i></a></th>
-                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
-                        <th id='R2C3'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='2' C='3'/> , document.getElementById("R2C3"));}}><i class="bi bi-square"></i></a></th>
-                    </tr>
-                    <tr>
-                        <th id='R3C1'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='3' C='1'/> , document.getElementById("R3C1"));}}><i class="bi bi-square"></i></a></th>
-                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
-                        <th id='R3C2'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='3' C='2'/> , document.getElementById("R3C2"));}}><i class="bi bi-square"></i></a></th>
-                        <th><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}> </a></th>
-                        <th id='R3C3'><a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}} onClick={function Call(){ReactDOM.render(<ChangetoX R='3' C='3'/> , document.getElementById("R3C3"));}}><i class="bi bi-square"></i></a></th>
                     </tr>
                 </table>
             );
@@ -137,7 +152,7 @@
             function HomePage(){
                 return(
                     <div>
-                        <div id="HomeName"><a><b>3D</b>2Y S3T</a></div>
+                        <div id="HomeName"><a><b>Tic-Tac-Toe</b></a></div>
 
                         <div className="container my-4 text-center">
                             <div className="row col-lg-12 col-xs-1 gx-3 text-center justify-content-center">
@@ -165,18 +180,15 @@
         <div className="container-fluids">
             <nav className="navbar navbar-expand-md navbar-dark fixed-top" style={{ background: 'rgba(0, 0, 10, 0.8)', cursor:'default' }}>
                 &nbsp;&nbsp;&nbsp;
-                <a href="index.php" style={{cursor:'default'}}><img src="https://icon-library.com/images/downloader-icon/downloader-icon-23.jpg" id="AaroophanIMG" height="35px" width="35px" className="rounded-5" /></a>
+                <a href="index.php" style={{cursor:'default'}}><img src="https://cdn3.iconfinder.com/data/icons/brain-games/128/Tic-Tac-Toe-Game.png" id="AaroophanIMG" height="35px" width="35px" className="rounded-5" /></a>
                 &nbsp;&nbsp;&nbsp;
-                <a className="navbar-brand fw-bold font-arial" id="PageNameA" href="index.php" style={{ cursor:'default', color:'rgba(210, 230, 250, 0.9)' }}>3D2Y-S3T</a>
+                <a className="navbar-brand fw-bold font-arial" id="PageNameA" href="index.php" style={{ cursor:'default', color:'rgba(210, 230, 250, 0.9)' }}>Tic-Tac-Toe</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle" style={{ cursor:'default', border:'none' }}>
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 &nbsp;&nbsp;&nbsp;
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a className="nav-link p-2 mx-3" style={{ cursor:'default' }}><i className="bi bi-house"></i></a>
-                        </li>
                         <li className="nav-item">
                             <a className="nav-link p-2 mx-3" style={{ cursor:'default', color:'rgba(210, 230, 250, 0.02)' }}>Aaroophan-3D2Y-S3T</a>
                         </li>
