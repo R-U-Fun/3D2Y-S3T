@@ -48,46 +48,181 @@
 
         let XO = [['-','-','-'], ['-','-','-'], ['-','-','-']];
 
+        function IfWin(){
+            
+            let Win;
+            if((XO[0][0]==='X') && (XO[0][1]==='X') && (XO[0][2]==='X')){
+                Win = true;
+            }
+            if((XO[1][0]==='X') && (XO[1][1]==='X') && (XO[1][2]==='X')){
+                Win = true;
+            }
+            if((XO[2][0]==='X') && (XO[2][1]==='X') && (XO[2][2]==='X')){
+                Win = true;
+            }
+            if((XO[0][0]==='X') && (XO[1][0]==='X') && (XO[2][0]==='X')){
+                Win = true;
+            }
+            if((XO[0][1]==='X') && (XO[1][1]==='X') && (XO[2][1]==='X')){
+                Win = true;
+            }
+            if((XO[0][2]==='X') && (XO[1][2]==='X') && (XO[2][2]==='X')){
+                Win = true;
+            }
+            if((XO[0][0]==='X') && (XO[1][1]==='X') && (XO[2][2]==='X')){
+                Win = true;
+            }
+            if((XO[0][2]==='X') && (XO[1][1]==='X') && (XO[2][0]==='X')){
+                Win = true;
+            }
+            
+            if((XO[0][0]==='O') && (XO[0][1]==='O') && (XO[0][2]==='O')){
+                Win = false;
+            }
+            if((XO[1][0]==='O') && (XO[1][1]==='O') && (XO[1][2]==='O')){
+                Win = false;
+            }
+            if((XO[2][0]==='O') && (XO[2][1]==='O') && (XO[2][2]==='O')){
+                Win = false;
+            }
+            if((XO[0][0]==='O') && (XO[1][0]==='O') && (XO[2][0]==='O')){
+                Win = false;
+            }
+            if((XO[0][1]==='O') && (XO[1][1]==='O') && (XO[2][1]==='O')){
+                Win = false;
+            }
+            if((XO[0][2]==='O') && (XO[1][2]==='O') && (XO[2][2]==='O')){
+                Win = false;
+            }
+            if((XO[0][0]==='O') && (XO[1][1]==='O') && (XO[2][2]==='O')){
+                Win = true;
+            }
+            if((XO[0][2]==='O') && (XO[1][1]==='O') && (XO[2][0]==='O')){
+                Win = true;
+            }
+
+            if(Win === true){
+                return(
+                    <a><b>WIN</b></a>
+                );
+            }
+            else if(Win === false){
+                return(
+                    <a><b>LOSE</b></a>
+                );
+            }
+            else{
+                return (<a><b>Tic-Tac-Toe</b></a>);
+            }
+        }
+        
+        function ChangetoO(propsss){
+
+            let R = parseInt(propsss.R);
+            let C = parseInt(propsss.C);
+            XO[R][C]='O';
+            console.log(XO);
+
+                return(
+                    <a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}><i class="bi bi-circle"></i></a>
+                );
+        }
         function ChangetoX(propsss){
             let R = parseInt(propsss.R);
             let C = parseInt(propsss.C);
             let NR, NC;
             
-            if(R===0 && C===0){
-                NR=1;
-                NC=0;
+            if(R===0 && C===0 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=1;
+                    NC=0;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
             }
-            else if(R===0 && C===1){
-                NR=2;
-                NC=2;
+            else if(R===0 && C===1 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=2;
+                    NC=2;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
             }
-            else if(R===0 && C===2){
-                NR=2;
-                NC=0;
+            else if(R===0 && C===2 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=2;
+                    NC=0;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
             }
-            else if(R===1 && C===0){
+            else if(R===1 && C===0 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=0;
+                    NC=1;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
+            }
+            else if(R===1 && C===1 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=1;
+                    NC=2;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
+            }
+            else if(R===1 && C===2 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=0;
+                    NC=1;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
                 NR=0;
                 NC=1;
             }
-            else if(R===1 && C===1){
-                NR=1;
-                NC=2;
+            else if(R===2 && C===0 && XO[R][C]==='-'){
+                if(XO[0][0]==='-'){
+                    NR=0;
+                    NC=0;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
             }
-            else if(R===1 && C===2){
-                NR=0;
-                NC=1;
+            else if(R===2 && C===1 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=1;
+                    NC=0;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
             }
-            else if(R===2 && C===0){
-                NR=0;
-                NC=0;
-            }
-            else if(R===2 && C===1){
-                NR=1;
-                NC=0;
-            }
-            else if(R===2 && C===2){
-                NR=2;
-                NC=1;
+            else if(R===2 && C===2 && XO[R][C]==='-'){
+                if(XO[1][0]==='-'){
+                    NR=2;
+                    NC=1;
+                }
+                else{
+                    NR=1;
+                    NC=1;
+                }
             }
             else{
                 null;
@@ -101,21 +236,12 @@
             if((XO[R][C]==='X' || XO[R][C]==='O')){
             ReactDOM.render(<ChangetoO R={NR} C={NC} /> , document.getElementById(Dest));
             }
+
             
+            ReactDOM.render(<IfWin/> , document.getElementById("HomeName"));
             
                 return(
                     <a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}><i class="bi bi-x-lg"></i></a>
-                );
-        }
-        function ChangetoO(propsss){
-
-            let R = parseInt(propsss.R);
-            let C = parseInt(propsss.C);
-            XO[R][C]='O';
-            console.log(XO);
-
-                return(
-                    <a className="card-title fs-1 fw-bold" style={{ cursor: 'default', color: 'rgb(0, 52, 117)', textDecoration: 'none'}}><i class="bi bi-circle"></i></a>
                 );
         }
 
