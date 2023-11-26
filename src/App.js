@@ -10,6 +10,7 @@ function App() {
     <div style={{background: 'rgba(100, 100, 100, 0.5)'}}>
       <br/><br/><br/>
       <HomePage/>
+      <br/><br/>
       <Footer />
     </div>
   );

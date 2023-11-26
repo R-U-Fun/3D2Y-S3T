@@ -54,9 +54,18 @@ export default function TicTacToe(){
         alert("WIN");
     }
 
+    if(Player){
+        if(R1C1){
+            console.log("YO");
+            setR2C2(!Player);
+            setPlayer(!Player);
+            ReactDOM.render(<XorO XorO={Player}/>, document.getElementById('R2C2'));
+        }
+    }
+
     return(
         <div>
-            <a className="btn btn-dark m-2 fs-2 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<TicTacToe />, document.getElementById('Box'))}>Tic-Tac-Toe</a>
+            <a className="btn btn-dark m-2 fs-2 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<TicTacToe />, document.getElementById('Box'))}>Tic-Tac-Toe BOT</a>
             <br/><br/>
             <div className="container border border-dark border-5">
                 <div className="row m-2"></div>
