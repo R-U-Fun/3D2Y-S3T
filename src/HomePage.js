@@ -16,6 +16,7 @@ export default function HomePage(){
                         </div>
                     </div>
                 </div>
+                <div id="WIN"></div>
             </div>
             <br/><br/>
         </div>
