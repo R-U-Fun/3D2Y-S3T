@@ -8,7 +8,7 @@ export default function Footer(){
       <div className="container">
         <br/><br/><hr />
         <div className="text-center">
-          <a href="http://aaroophan-com.stackstaging.com" style={{ cursor:'default', color:'rgba(250, 250, 250, 0.9)', textDecoration:'none' }}>&copy; 2023 | Aaroophan</a>
+          <a href="http://aaroophan-com.stackstaging.com" style={{ cursor:'default', color:'rgba(250, 250, 250, 0.9)', textDecoration:'none' }}>Aaroophan</a>
           <br/>
           <ul className="list-inline">
             <li className="list-inline-item"><a href="https://www.instagram.com/aaroophan/?theme=dark" style={{ cursor:'default', fontsize: '20px', color:'rgba(250, 250, 250, 0.9)' }}><i className="bi bi-instagram"></i></a></li>

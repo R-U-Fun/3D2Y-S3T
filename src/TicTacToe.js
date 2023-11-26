@@ -60,7 +60,8 @@ export default function TicTacToe(){
             <a className="btn btn-dark m-2 fs-2 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<TicTacToe />, document.getElementById('Box'))}>Tic-Tac-Toe</a>
             <br/><br/>
             <div className="container border border-dark border-5">
-                <div className="row m-5">
+                <div className="row m-2"></div>
+                <div className="row m-2">
                     <div id="R1C1" className="col">
                     <div onClick={() => {
                         setR1C1(!Player);
@@ -89,7 +90,7 @@ export default function TicTacToe(){
                     </div>
                     </div>
                 </div>
-                <div className="row m-5">
+                <div className="row m-2">
                     <div id="R2C1" className="col">
                     <div onClick={() => {
                         setR2C1(!Player);
@@ -118,7 +119,7 @@ export default function TicTacToe(){
                     </div>
                     </div>
                 </div>
-                <div className="row m-5">
+                <div className="row m-2">
                     <div id="R3C1" className="col">
                     <div onClick={() => {
                         setR3C1(!Player);
@@ -147,6 +148,7 @@ export default function TicTacToe(){
                     </div>
                     </div>
                 </div>
+                <div className="row m-2"></div>
             </div>
             <br/><br/>
             <a className="btn btn-dark m-4 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<TicTacToe />, document.getElementById('Box'))}>Super Tic-Tac-Toe Soon</a>
